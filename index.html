@@ -39,7 +39,7 @@
 
     <div class="main-wrapper">
         <aside>
-            <div class="sidebar-title">Продукція</div>
+            <div class="sidebar-title" id="sidebar-title">Продукція</div>
             <ul class="product-menu">
                 <li><a href="#" data-product="dvp">ДВП</a></li>
                 <li><a href="#" data-product="dvpo">ДВПО</a></li>
@@ -170,12 +170,9 @@
             </section>
 
             <section class="view" id="view-product" hidden>
+                <div id="product-breadcrumb" class="breadcrumb" hidden></div>
                 <h1 id="product-title"></h1>
-                <p class="description" id="product-description"></p>
-                <div class="grid-placeholder">
-                    <div class="box"></div>
-                    <div class="box"></div>
-                </div>
+                <div id="product-content"></div>
             </section>
 
             <section class="view" id="view-syrovyna" hidden>

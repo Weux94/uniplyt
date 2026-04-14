@@ -779,6 +779,31 @@ h1 {
     transform: translateY(-50%);
 }
 
+/* Breadcrumb for contextual product views */
+.breadcrumb {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.breadcrumb a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--primary);
+}
+
+.breadcrumb a:hover {
+    border-bottom-style: solid;
+}
+
+.breadcrumb-sep {
+    margin: 0 10px;
+    color: var(--text-muted);
+}
+
 /* Section titles inside views */
 .section-title {
     font-size: 1.3rem;
