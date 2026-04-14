@@ -31,7 +31,7 @@ const products = {
     }
 };
 
-// Contexts that support "виводити інформацію про конкретний продукт"
+// Contexts activated via sidebar toggle — show per-product info
 const productContexts = {
     sertyfikaty: {
         label: 'Сертифікати',
@@ -41,46 +41,6 @@ const productContexts = {
             'Продукт {product} виробляється у рамках сертифікованого FSC® CoC-ланцюжка постачання (ліцензія FSC-C112264, дійсна до 02.10.2027). Це підтверджує, що сировина походить з легальних і відповідально керованих лісів, а кожен етап виробництва підлягає аудиту.',
             '{ProductCap} відповідає вимогам українських стандартів ДСТУ, ГОСТ та УкрСЕПРО, супроводжується висновками санітарно-епідеміологічної служби та сертифікатом відповідності на готову продукцію.',
             'На запит клієнта до кожної партії {product} ми додаємо повний пакет документів: сертифікат якості, паспорт партії, протоколи лабораторних випробувань і радіологічні висновки. Усе прозоро, усе офіційно.'
-        ]
-    },
-    foto: {
-        label: 'Фото виробництва',
-        sidebarTitle: 'Фото виробництва',
-        titleTpl: 'Фото виробництва — {ProductCap}',
-        paragraphs: [
-            'На цій сторінці представлені фото ключових етапів виробництва {product}: від приймання сировини та підготовки щепи — до пресування, сушіння й фінішної обробки готової плити.',
-            'Усі процеси контролюються оператором і заводською лабораторією якості. Обладнання — сучасне європейське, яке ми регулярно модернізуємо для підвищення продуктивності та зниження впливу на довкілля.',
-            'Галерея постійно поповнюється новими фото з цеху. Незабаром ви зможете побачити повний виробничий цикл {product} у деталях.'
-        ]
-    },
-    quality: {
-        label: 'Система якості',
-        sidebarTitle: 'Якість продукту',
-        titleTpl: 'Система якості — {ProductCap}',
-        paragraphs: [
-            'Якість {product} контролюється за показниками ДСТУ, ГОСТ та УкрСЕПРО. Кожна партія проходить лабораторні випробування на щільність, міцність, вологість і клас емісії формальдегіду — без винятків.',
-            'Виробництво {product} ведеться на сучасному європейському обладнанні, що забезпечує стабільність параметрів від партії до партії. Технологічні режими перевіряються в режимі реального часу.',
-            'Ми не йдемо на компроміси там, де йдеться про безпеку. Кожна одиниця продукції, яка покидає наш цех, відповідає заявленим у паспорті характеристикам — інакше вона просто не виходить за ворота.'
-        ]
-    },
-    syrovyna: {
-        label: 'Сировина',
-        sidebarTitle: 'Сировина продукту',
-        titleTpl: 'Сировина для {product}',
-        paragraphs: [
-            'Для виготовлення {product} ми використовуємо виключно ліквідну деревину з легальних джерел. FSC® CoC-сертифікат підтверджує відповідальне походження сировини та контроль ланцюжка постачання на кожному етапі.',
-            'Незаконно заготовлений лісоматеріал чи деревина без необхідних дозволів у наше виробництво не потрапляють. Ми працюємо лише з перевіреними постачальниками, з якими співпрацюємо роками.',
-            'Уся сировина, що йде на {product}, додатково перевіряється на радіаційне забруднення та супроводжується відповідними сертифікатами. Безпека — це не опція, а базова вимога.'
-        ]
-    },
-    bezpeka: {
-        label: 'Безпека матеріалів',
-        sidebarTitle: 'Безпека продукту',
-        titleTpl: 'Безпека матеріалів — {ProductCap}',
-        paragraphs: [
-            '{ProductCap} дозволено Міністерством охорони здоров\'я України до використання в житлових, громадських і виробничих приміщеннях. У виробництві застосовуються виключно екологічно безпечні компоненти.',
-            'Кожна партія {product} проходить вхідний лабораторний контроль і санітарно-епідеміологічний нагляд обласної СЕС. Це гарантує відповідність і українським, і європейським нормам безпеки.',
-            'Ми орієнтуємось на вимоги директив ЄС щодо екологічності та безпеки продукції — це одночасно відкриває нам європейські ринки й забезпечує найвищий рівень захисту для українського споживача.'
         ]
     }
 };
@@ -94,13 +54,46 @@ const contentEl = document.getElementById('product-content');
 const breadcrumbEl = document.getElementById('product-breadcrumb');
 const sidebarTitleEl = document.getElementById('sidebar-title');
 
+let currentProduct = null;
+
 function updateSidebarTitle() {
-    if (currentContext && productContexts[currentContext]?.sidebarTitle) {
-        sidebarTitleEl.textContent = productContexts[currentContext].sidebarTitle;
-    } else {
-        sidebarTitleEl.textContent = 'Продукція';
-    }
+    const ctxKey = 'sertyfikaty';
+    const ctxLabel = productContexts[ctxKey].sidebarTitle;
+    const prodActive = currentContext === null ? 'active' : '';
+    const ctxActive = currentContext === ctxKey ? 'active' : '';
+    sidebarTitleEl.innerHTML = `
+        <div class="sidebar-tabs">
+            <button type="button" class="sb-tab ${prodActive}" data-tab-clear="1">Продукція</button>
+            <button type="button" class="sb-tab ${ctxActive}" data-tab-ctx="${ctxKey}">${ctxLabel}</button>
+        </div>
+    `;
 }
+
+document.addEventListener('click', (e) => {
+    const clear = e.target.closest('[data-tab-clear]');
+    if (clear) {
+        e.preventDefault();
+        currentContext = null;
+        updateSidebarTitle();
+        if (currentProduct) {
+            renderProduct(currentProduct);
+        } else {
+            setActiveLink(null);
+            showView('home');
+        }
+        return;
+    }
+    const setCtx = e.target.closest('[data-tab-ctx]');
+    if (setCtx) {
+        e.preventDefault();
+        currentContext = setCtx.dataset.tabCtx;
+        updateSidebarTitle();
+        renderProduct(currentProduct || 'dvp');
+        return;
+    }
+});
+
+updateSidebarTitle();
 
 function showView(name) {
     views.forEach(v => {
@@ -128,6 +121,7 @@ function fillTemplate(str, product) {
 function renderProduct(productKey) {
     const product = products[productKey];
     if (!product) return;
+    currentProduct = productKey;
 
     const sidebarLink = document.querySelector(`.product-menu a[data-product="${productKey}"]`);
 
@@ -176,10 +170,9 @@ menuLinks.forEach(link => {
 document.querySelectorAll('.top-nav a[data-view]').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
-        const view = link.dataset.view;
-        currentContext = productContexts[view] ? view : null;
+        currentContext = null;
         updateSidebarTitle();
-        showView(view);
+        showView(link.dataset.view);
         setActiveLink(null);
     });
 });
@@ -198,7 +191,7 @@ document.querySelectorAll('.inline-link[data-view]').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const viewName = link.dataset.view;
-        currentContext = productContexts[viewName] ? viewName : null;
+        currentContext = null;
         updateSidebarTitle();
         showView(viewName);
         setActiveLink(null);

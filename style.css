@@ -148,12 +148,46 @@ aside {
 }
 
 .sidebar-title {
-    padding: 0 40px 20px;
+    padding: 0 20px 24px;
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1.5px;
+}
+
+.sidebar-tabs {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    background: #eef3ef;
+    border-radius: 100px;
+}
+
+.sb-tab {
+    flex: 1;
+    padding: 8px 10px;
+    border: none;
+    background: transparent;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.sb-tab:hover {
+    color: var(--primary);
+}
+
+.sb-tab.active {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(30, 77, 43, 0.25);
 }
 
 .product-menu {
