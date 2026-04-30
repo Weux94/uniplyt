@@ -120,3 +120,30 @@
 .contact-card a:hover {
     text-decoration: underline;
 }
+
+@media (max-width: 767px) {
+    .section-title {
+        font-size: 16px;
+        margin-top: 36px;
+        margin-bottom: 18px;
+        letter-spacing: 0.8px;
+    }
+
+    .btn {
+        padding: 13px 22px;
+        font-size: 13px;
+    }
+
+    .btn-lg {
+        padding: 16px 28px;
+        font-size: 14px;
+    }
+
+    .contact-card {
+        padding: 18px;
+    }
+
+    .contact-card h3 {
+        font-size: 15px;
+    }
+}

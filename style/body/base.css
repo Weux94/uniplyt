@@ -12,6 +12,23 @@
     box-sizing: border-box;
 }
 
+html {
+    background: #00513B;
+    position: relative;
+    min-height: 100%;
+}
+
+/* Розмитий лісовий фон, видно в "полях" по боках 1200px-колонки на широких моніторах */
+html::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: url('../../image/Brussels_Zonienwoud.jpg') center/cover no-repeat;
+    filter: blur(14px) brightness(0.65);
+    transform: scale(1.1);
+    z-index: -1;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     color: var(--text-main);
@@ -19,6 +36,8 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background: #fff;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 h1 {
@@ -39,4 +58,16 @@ h1 {
     color: var(--primary);
     font-weight: 600;
     text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+    h1 {
+        font-size: 28px;
+        margin-bottom: 18px;
+    }
+
+    .description {
+        font-size: 16px;
+        line-height: 1.6;
+    }
 }

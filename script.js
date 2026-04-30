@@ -155,3 +155,56 @@ document.querySelectorAll('[data-view-link]').forEach(btn => {
         setActiveLink(null);
     });
 });
+
+/* Mobile burger menu */
+const burger = document.getElementById('burger-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+
+function setMobileMenuOpen(isOpen) {
+    if (!burger || !mobileMenu) return;
+    mobileMenu.classList.toggle('open', isOpen);
+    burger.classList.toggle('open', isOpen);
+    burger.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+    document.body.classList.toggle('no-scroll', isOpen);
+}
+
+if (burger && mobileMenu) {
+    burger.addEventListener('click', () => {
+        setMobileMenuOpen(!mobileMenu.classList.contains('open'));
+    });
+
+    mobileMenu.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link) return;
+
+        const productKey = link.dataset.product;
+        const productLink = link.dataset.productLink;
+        const viewName = link.dataset.view;
+
+        if (productKey && products[productKey]) {
+            e.preventDefault();
+            renderProduct(productKey);
+        } else if (productLink) {
+            e.preventDefault();
+            renderProduct(productLink);
+        } else if (viewName) {
+            e.preventDefault();
+            showView(viewName);
+            setActiveLink(null);
+        }
+        setMobileMenuOpen(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+            setMobileMenuOpen(false);
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!mobileMenu.classList.contains('open')) return;
+        if (e.target.closest('#mobile-menu') || e.target.closest('#burger-toggle')) return;
+        setMobileMenuOpen(false);
+    });
+}

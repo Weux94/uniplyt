@@ -9,3 +9,14 @@
     flex: 1;
     min-width: 220px;
 }
+
+@media (max-width: 767px) {
+    .contacts-grid {
+        gap: 14px;
+    }
+
+    .contacts-grid > * {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+}

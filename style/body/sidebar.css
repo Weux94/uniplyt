@@ -53,3 +53,13 @@ main {
     flex: 1;
     padding: 60px 80px;
 }
+
+@media (max-width: 767px) {
+    aside {
+        display: none;
+    }
+
+    main {
+        padding: 30px 20px;
+    }
+}

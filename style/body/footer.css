@@ -90,3 +90,28 @@ footer {
     color: #fff;
     border-bottom-color: #fff;
 }
+
+@media (max-width: 767px) {
+    .footer-main {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 32px 20px 24px;
+    }
+
+    .footer-col-fsc {
+        align-self: center;
+    }
+
+    .footer-fsc img {
+        height: 90px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 16px 20px;
+        font-size: 12px;
+    }
+}
