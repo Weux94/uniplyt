@@ -1,0 +1,118 @@
+header {
+    height: 90px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.logo {
+    width: var(--sidebar-width);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 72px;
+    width: auto;
+    display: block;
+}
+
+.top-nav {
+    display: flex;
+    gap: 35px;
+}
+
+.top-nav > li {
+    list-style: none;
+    position: relative;
+}
+
+.top-nav > li > a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 90px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+}
+
+.top-nav > li > a:hover,
+.top-nav > li:hover > a {
+    color: var(--primary);
+}
+
+.top-nav .caret {
+    font-size: 10px;
+    transition: transform 0.2s;
+}
+
+.top-nav > li:hover .caret {
+    transform: rotate(180deg);
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 240px;
+    background: var(--primary);
+    list-style: none;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+}
+
+.top-nav > li:hover > .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown li a {
+    display: block;
+    padding: 14px 24px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+    transition: background 0.15s;
+}
+
+.dropdown li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.lang {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-main);
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+}
+
+/* Burger and mobile menu — hidden on desktop, shown via mobile media queries */
+.burger {
+    display: none;
+}
+
+.mobile-menu {
+    display: none;
+}

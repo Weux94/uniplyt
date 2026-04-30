@@ -1,0 +1,45 @@
+.info-blocks {
+    margin-top: 70px;
+    display: flex;
+    gap: 40px;
+}
+
+.info-blocks > * {
+    flex: 1;
+}
+
+.info-block h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.purchase-list {
+    list-style: none;
+}
+
+.purchase-list li {
+    padding: 12px 0 12px 22px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.5;
+    position: relative;
+}
+
+.purchase-list li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+    transform: translateY(-50%);
+}

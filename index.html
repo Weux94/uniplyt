@@ -3,20 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uniplyt — B2B Structure</title>
+
+    <title>Уніплит — виробництво ДВП, ДВПО, фанери та пиломатеріалів | FSC-сертифікація</title>
+    <meta name="description" content="ТОВ «Уніплит» — український виробник ДВП мокрого способу, ДВПО, фанери та пиломатеріалів з 1994 року. FSC® CoC сертифікація, експорт у 20+ країн, B2B-контракти напряму з виробником.">
+    <meta name="keywords" content="ДВП, ДВПО, фанера, пиломатеріали, Уніплит, FSC, виробництво ДВП Україна, ДВП мокрим способом, Вигода">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://uniplyt.com.ua/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="uk_UA">
+    <meta property="og:site_name" content="Уніплит">
+    <meta property="og:title" content="Уніплит — ДВП, ДВПО, фанера та пиломатеріали з українського лісу">
+    <meta property="og:description" content="30+ років виробництва. FSC-сертифікована сировина. Експорт у 20+ країн. ДВП мокрим способом — без клею і без хімії.">
+    <meta property="og:url" content="https://uniplyt.com.ua/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Уніплит — виробництво ДВП, ДВПО та фанери">
+    <meta name="twitter:description" content="Український виробник з FSC-сертифікацією. 30+ років, експорт у 20+ країн.">
+
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ТОВ «Уніплит»",
+      "alternateName": "Uniplyt",
+      "url": "https://uniplyt.com.ua/",
+      "logo": "https://uniplyt.com.ua/logo.png",
+      "description": "Український виробник ДВП, ДВПО, фанери та пиломатеріалів з 1994 року. FSC® CoC сертифікація.",
+      "foundingDate": "1994",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "вул. Заводська, 4",
+        "addressLocality": "Вигода",
+        "addressRegion": "Івано-Франківська область",
+        "addressCountry": "UA"
+      },
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+38-03477-6-11-01",
+        "contactType": "sales",
+        "areaServed": ["UA", "EU", "Asia"],
+        "availableLanguage": ["Ukrainian", "English"]
+      }],
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "FSC® Chain of Custody",
+        "identifier": "FSC-C112264"
+      }
+    }
+    </script>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo" data-view="home">Uniplyt</a>
+        <a href="#" class="logo" data-view="home" aria-label="Uniplyt — на головну">
+            <img src="image/logo_svg/uniplyt_logo_green.svg" alt="Uniplyt">
+        </a>
         <ul class="top-nav">
             <li>
                 <a href="#">Компанія <span class="caret">▼</span></a>
                 <ul class="dropdown">
                     <li><a href="#" data-view="sertyfikaty">Сертифікати</a></li>
-                    <li><a href="#" data-view="foto">Фото виробництва</a></li>
                     <li><a href="#" data-view="social">Соціальні ініціативи</a></li>
                     <li><a href="#" data-view="vlk">Вигодський лісокомбінат</a></li>
                     <li><a href="#" data-view="finance">Фінансова звітність</a></li>
@@ -24,18 +76,59 @@
                 </ul>
             </li>
             <li>
-                <a href="#">Екологія <span class="caret">▼</span></a>
+                <a href="#" data-view="projects">Інші напрямки <span class="caret">▼</span></a>
                 <ul class="dropdown">
-                    <li><a href="#" data-view="syrovyna">Сировина</a></li>
-                    <li><a href="#" data-view="bezpeka">Безпека матеріалів</a></li>
+                    <li><a href="https://unibruk.com.ua/" target="_blank" rel="noopener">Unibruk — бруківка</a></li>
+                    <li><a href="https://gorgania.com.ua/" target="_blank" rel="noopener">Gorgania — двері</a></li>
+                    <li><a href="https://kartram.com.ua/" target="_blank" rel="noopener">Карпатський трамвай</a></li>
+                    <li><a href="#" data-product-link="brykety">RUF — паливні брикети</a></li>
                 </ul>
             </li>
-            <li><a href="#" data-view="projects">Наші проекти</a></li>
+            <li><a href="#" data-view="syrovyna">Екологія</a></li>
             <li><a href="#" data-view="zakupivli">Закупівлі</a></li>
             <li><a href="#" data-view="contacts">Контакти</a></li>
         </ul>
         <div class="lang">UA | EN</div>
+        <button class="burger" type="button" aria-label="Відкрити меню" aria-expanded="false" id="burger-toggle">
+            <span></span><span></span><span></span>
+        </button>
     </header>
+
+    <nav class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-section">
+            <h4 class="mobile-menu-title">Навігація</h4>
+            <ul>
+                <li><a href="#" data-view="sertyfikaty">Сертифікати</a></li>
+                <li><a href="#" data-view="social">Соціальні ініціативи</a></li>
+                <li><a href="#" data-view="vlk">Вигодський лісокомбінат</a></li>
+                <li><a href="#" data-view="finance">Фінансова звітність</a></li>
+                <li><a href="#" data-view="quality">Система якості</a></li>
+                <li><a href="#" data-view="syrovyna">Екологія</a></li>
+                <li><a href="#" data-view="zakupivli">Закупівлі</a></li>
+                <li><a href="#" data-view="contacts">Контакти</a></li>
+            </ul>
+        </div>
+        <div class="mobile-menu-section">
+            <h4 class="mobile-menu-title">Продукція</h4>
+            <ul>
+                <li><a href="#" data-product="dvp">ДВП</a></li>
+                <li><a href="#" data-product="dvpo">ДВПО</a></li>
+                <li><a href="#" data-product="fanera">Фанера</a></li>
+                <li><a href="#" data-product="pylomaterialy">Пиломатеріали</a></li>
+                <li><a href="#" data-product="dveri">Двері</a></li>
+                <li><a href="#" data-product="brykety">Паливні брикети</a></li>
+            </ul>
+        </div>
+        <div class="mobile-menu-section">
+            <h4 class="mobile-menu-title">Інші напрямки</h4>
+            <ul>
+                <li><a href="https://unibruk.com.ua/" target="_blank" rel="noopener">Unibruk — бруківка</a></li>
+                <li><a href="https://gorgania.com.ua/" target="_blank" rel="noopener">Gorgania — двері</a></li>
+                <li><a href="https://kartram.com.ua/" target="_blank" rel="noopener">Карпатський трамвай</a></li>
+                <li><a href="#" data-product-link="brykety">RUF — паливні брикети</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="main-wrapper">
         <aside>
@@ -52,12 +145,22 @@
 
         <main>
             <section class="view" id="view-home">
-                <div class="hero">
-                    <div class="hero-eyebrow">30 років у деревообробці</div>
-                    <h1 class="hero-title">З українського лісу —<br><span class="hero-accent">у цілий світ.</span></h1>
-                    <p class="hero-lead">
-                        Ми виробляємо ДВП, ДВПО, фанеру та пиломатеріали, яким довіряють меблеві фабрики й будівельники від Карпат до Азії. За кожною плитою — FSC-сертифіковане дерево, сучасне європейське обладнання і три десятиліття одержимості якістю.
-                    </p>
+                <div class="hero hero-minimal">
+                    <h1 class="hero-title">У світі деревообробки<br>цифри кажуть <span class="hero-accent">самі за себе.</span></h1>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-num">50+</div>
+                            <div class="hero-stat-label">років досвіду</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-num">30+</div>
+                            <div class="hero-stat-label">країн поставок</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-num">500+</div>
+                            <div class="hero-stat-label">клієнтів</div>
+                        </div>
+                    </div>
                     <div class="hero-actions">
                         <a href="#" class="btn btn-primary" data-product-link="dvp">Переглянути продукцію</a>
                         <a href="#" class="btn btn-ghost" data-view-link="contacts">Зв'язатися з нами</a>
@@ -69,37 +172,34 @@
                         <span class="highlight-kicker">Географія без меж</span>
                         <h2 class="highlight-title">Одна компанія. Багато напрямків. <em>Єдиний стандарт якості.</em></h2>
                         <p class="highlight-text">
-                            Як ми цього досягли? Понад <strong>30 років</strong> відточували кожну деталь — від сировини до відвантаження. І наші клієнти це підтверджують.
+                            Вигодський лісокомбінат на Прикарпатті працює з 1970-х. «Уніплит» продовжує його справу і несе марку якості, що накопичувалась десятиліттями. <strong>50+ років</strong> безперервного виробничого досвіду в одній точці.
                         </p>
                         <div class="highlight-tags">
-                            <span class="tag">20+ країн експорту</span>
-                            <span class="tag">30+ років досвіду</span>
-                            <span class="tag">B2B-контракти напряму</span>
+                            <span class="tag">Власний лісокомбінат</span>
+                            <span class="tag">Прикарпаття, селище Вигода</span>
+                            <span class="tag">Повний цикл переробки</span>
                         </div>
                     </div>
                     <div class="highlight-visual">
                         <div class="highlight-circle">
                             <div class="highlight-symbol">✦</div>
-                            <div class="highlight-caption">30+</div>
-                            <div class="highlight-sub">років досвіду</div>
+                            <div class="highlight-caption">50+</div>
+                            <div class="highlight-sub">років виробництва</div>
                         </div>
                     </div>
                 </section>
 
                 <section class="highlight">
                     <div class="highlight-content">
-                        <span class="highlight-kicker">Технологія мокрого типу</span>
-                        <h2 class="highlight-title">Ми — лідери виробництва ДВП <em>мокрим способом</em>. Без клею. Без хімії.</h2>
+                        <span class="highlight-kicker">Мокрий процес</span>
+                        <h2 class="highlight-title">ДВП без хімії. <em>Тримає сама природа.</em></h2>
                         <p class="highlight-text">
-                            На заміну синтетичним смолам і формальдегідним клеям у нас працює сама природа: замість хімії плиту тримає <strong>лігнін — натуральна деревна смола</strong>, яка вивільняється з волокон під час гарячого пресування. Це та сама речовина, що століттями тримає разом живе дерево в лісі.
-                        </p>
-                        <p class="highlight-text">
-                            Результат — плита, яку ви можете поставити у дитячу кімнату чи на кухню без жодних застережень. Жодного натяку на формальдегід, жодного запаху хімії, тільки чисте українське дерево.
+                            Більшість виробників склеюють деревні плити формальдегідними смолами. Ми йдемо іншим шляхом — мокрим способом, де плиту тримає <strong>лігнін</strong>: натуральна деревна смола з самого волокна. Та сама речовина, що століттями тримає живе дерево в лісі.
                         </p>
                         <div class="highlight-tags">
-                            <span class="tag">0% формальдегіду</span>
-                            <span class="tag">100% натуральна зв'язка</span>
-                            <span class="tag">Безпечно для дітей</span>
+                            <span class="tag">Клас емісії E1</span>
+                            <span class="tag">Без синтетичних смол</span>
+                            <span class="tag">100% природна основа</span>
                         </div>
                     </div>
                     <div class="highlight-visual">
@@ -133,31 +233,6 @@
                     </div>
                 </section>
 
-                <section class="use-cases">
-                    <div class="section-header">
-                        <span class="section-kicker">Де працює наша продукція</span>
-                        <h2 class="section-heading">Від вашої кухні до контейнера в порту</h2>
-                    </div>
-                    <div class="use-grid">
-                        <div class="use-card">
-                            <h4>Меблеві фабрики</h4>
-                            <p>Задні стінки шаф, днища ящиків, внутрішні елементи корпусних меблів — там, де потрібна стабільна плита без сюрпризів.</p>
-                        </div>
-                        <div class="use-card">
-                            <h4>Будівництво та ремонт</h4>
-                            <p>Опалубка, чорнові підлоги, обшивка перегородок. Фанера ФКМ витримує вологу, а ДВП — роки експлуатації.</p>
-                        </div>
-                        <div class="use-card">
-                            <h4>Транспорт та упаковка</h4>
-                            <p>Оздоблення кузовів, внутрішнє облицювання вагонів, виробництво ящиків і тари для промислових вантажів.</p>
-                        </div>
-                        <div class="use-card">
-                            <h4>Експорт</h4>
-                            <p>Наша продукція відвантажується в Європу, країни Азії та інші ринки. B2B-контракти, пряма робота з виробниками.</p>
-                        </div>
-                    </div>
-                </section>
-
                 <section class="cta-block">
                     <h2>Потрібна пропозиція під ваш проєкт?</h2>
                     <p>Наші менеджери підберуть марку плити, розрахують об'єм і логістику — у відповідь ви отримаєте конкретні цифри, а не загальні слова.</p>
@@ -166,7 +241,6 @@
             </section>
 
             <section class="view" id="view-product" hidden>
-                <div id="product-breadcrumb" class="breadcrumb" hidden></div>
                 <h1 id="product-title"></h1>
                 <div id="product-content"></div>
             </section>
@@ -198,15 +272,31 @@
             </section>
 
             <section class="view" id="view-sertyfikaty" hidden>
-                <h1>Сертифікати</h1>
+                <h1>Сертифікати ТОВ «Уніплит»</h1>
                 <p class="description">
-                    Компанія «Уніплит» отримала сертифікат ланцюжка постачання Forest Stewardship Council® ще у 2012 році, а у 2022 році успішно пройшла переоцінку. Документ видано компанією Preferred by Nature на відповідність міжнародним стандартам FSC-STD-40-004 V3-1 та FSC-STD-50-001 V2-1. Ліцензійний код для використання товарного знаку — FSC-C112264, сертифікат дійсний з 02.10.2022 до 01.10.2027.
+                    Компанія отримала сертифікат ланцюжка постачання Forest Stewardship Council® за результатами перевірки у липні 2012 року. Переоцінку проведено у 2022 році компанією Preferred by Nature.
                 </p>
-                <p class="description">
-                    Наявність FSC-сертифікації засвідчує, що продукція виробляється з деревини легальних джерел, отриманої відповідальними лісозаготівельниками із дотриманням екологічних і соціальних норм. Це підтверджує екологічну відповідальність компанії у виробництві ДВП, ДВПО та фанери.
-                </p>
-                <p class="description">
-                    Додатково компанія має сертифікати відповідності та висновки санітарно-епідеміологічної служби на продукцію ДВП (типи НВ та МВН) і фанеру (тип ФК), що гарантує безпеку та якість матеріалів для кінцевого споживача.
+
+                <h2 class="section-title">FSC® Ліцензія</h2>
+                <div class="contact-card">
+                    <p><strong>Ліцензійний код:</strong> FSC-C112264</p>
+                    <p><strong>Реєстраційний номер:</strong> NC-COC-013393</p>
+                    <p><strong>Стандарти:</strong> FSC-STD-40-004 V3-1; FSC-STD-50-001 V2-1 EN</p>
+                    <p><strong>Термін дії:</strong> з 02.10.2022 до 01.10.2027</p>
+                    <p style="margin-top: 14px;">
+                        <a href="image/patterns/UNIPLYT-LLC-FSC-COC-Certificate-6.9.2022_1662444984.pdf" target="_blank" rel="noopener" class="pdf-link">
+                            <svg class="pdf-icon" width="22" height="26" viewBox="0 0 22 26" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M2 0h12l6 6v18a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z" fill="#dc2626"/>
+                                <path d="M14 0v6h6z" fill="#fca5a5"/>
+                                <text x="11" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" font-weight="700" fill="#fff">PDF</text>
+                            </svg>
+                            <span>Сертифікат FSC®</span>
+                        </a>
+                    </p>
+                </div>
+
+                <p class="description" style="margin-top: 30px;">
+                    Сертифікація за стандартами FSC® свідчить про те, що продукція ТОВ «Уніплит» виготовлена з деревини, отриманої з легальних джерел відповідальними лісозаготівельниками. Детальну інформацію можна знайти на офіційному сайті <a href="http://info.fsc.org/" target="_blank" rel="noopener" class="inline-link">info.fsc.org</a>.
                 </p>
             </section>
 
@@ -368,27 +458,47 @@
 
                 <div class="projects-grid">
                     <article class="project-card">
-                        <h3>Unibruk — бруківка</h3>
-                        <p>Ми успішно працюємо у сфері виробництва бетонної бруківки. Міцні, естетичні та довговічні рішення для тротуарів, подвір'їв і громадських просторів по всій Україні.</p>
-                        <a href="https://unibruk.com.ua/" target="_blank" rel="noopener" class="project-link">unibruk.com.ua →</a>
+                        <div class="project-media">
+                            <img src="image/unibruk/stare-misto-2.jpg" alt="Unibruk — бруківка" loading="lazy">
+                        </div>
+                        <div class="project-body">
+                            <h3><a href="https://unibruk.com.ua/" target="_blank" rel="noopener">Unibruk — бруківка</a></h3>
+                            <p>Ми успішно працюємо у сфері виробництва бетонної бруківки. Міцні, естетичні та довговічні рішення для тротуарів, подвір'їв і громадських просторів по всій Україні.</p>
+                            <a href="https://unibruk.com.ua/" target="_blank" rel="noopener" class="project-link">unibruk.com.ua →</a>
+                        </div>
                     </article>
 
                     <article class="project-card">
-                        <h3>Gorgania — двері</h3>
-                        <p>Наші двері стали тим входом — не лише у вітальню, а й у нові горизонти. Сучасний дизайн, якість матеріалів і характер у кожній деталі. Ми створюємо двері, які відчиняють більше, ніж кімнати.</p>
-                        <a href="https://gorgania.com.ua/" target="_blank" rel="noopener" class="project-link">gorgania.com.ua →</a>
+                        <div class="project-media">
+                            <img src="image/gorgania/photo_1.jpg" alt="Gorgania — двері" loading="lazy">
+                        </div>
+                        <div class="project-body">
+                            <h3><a href="https://gorgania.com.ua/" target="_blank" rel="noopener">Gorgania — двері</a></h3>
+                            <p>Наші двері стали тим входом — не лише у вітальню, а й у нові горизонти. Сучасний дизайн, якість матеріалів і характер у кожній деталі. Ми створюємо двері, які відчиняють більше, ніж кімнати.</p>
+                            <a href="https://gorgania.com.ua/" target="_blank" rel="noopener" class="project-link">gorgania.com.ua →</a>
+                        </div>
                     </article>
 
                     <article class="project-card">
-                        <h3>Карпатський трамвай</h3>
-                        <p>Нам цього було замало — і саме тому ми відреставрували залізничний шлях у самому серці Карпат. Історична вузькоколійка знову живе, даруючи мандрівникам атмосферу минулого століття й краєвиди, які неможливо забути.</p>
-                        <a href="https://kartram.com.ua/" target="_blank" rel="noopener" class="project-link">kartram.com.ua →</a>
+                        <div class="project-media">
+                            <img src="image/karpatTram/4.png" alt="Карпатський трамвай" loading="lazy">
+                        </div>
+                        <div class="project-body">
+                            <h3><a href="https://kartram.com.ua/" target="_blank" rel="noopener">Карпатський трамвай</a></h3>
+                            <p>Нам цього було замало — і саме тому ми відреставрували залізничний шлях у самому серці Карпат. Історична вузькоколійка знову живе, даруючи мандрівникам атмосферу минулого століття й краєвиди, які неможливо забути.</p>
+                            <a href="https://kartram.com.ua/" target="_blank" rel="noopener" class="project-link">kartram.com.ua →</a>
+                        </div>
                     </article>
 
                     <article class="project-card">
-                        <h3>Руфи — покрівельні матеріали</h3>
-                        <p>Ми не забули і про екологічні норми: випускаємо покрівельні матеріали (руфи) високої якості, що відповідають сучасним стандартам. Надійний дах над головою — у буквальному сенсі.</p>
-                        <span class="project-link project-link-muted">Сайт у розробці</span>
+                        <div class="project-media">
+                            <img src="image/ruf.jpg" alt="RUF — паливні брикети" loading="lazy">
+                        </div>
+                        <div class="project-body">
+                            <h3><a href="#" data-product-link="brykety">RUF — паливні брикети</a></h3>
+                            <p>Власна торгова марка паливних брикетів стандарту RUF — пресована цеглина з тирси та деревних відходів власного лісокомбінату. Без хімічних добавок, висока щільність, тривале горіння й мінімум золи.</p>
+                            <a href="#" data-product-link="brykety" class="project-link">Перейти до продукту →</a>
+                        </div>
                     </article>
                 </div>
             </section>
@@ -398,38 +508,30 @@
     <footer>
         <div class="footer-main">
             <div class="footer-col">
-                <h4>Навігація</h4>
-                <ul>
-                    <li><a href="#">Компанія</a></li>
-                    <li><a href="#">Продукція</a></li>
-                    <li><a href="#">Сертифікати</a></li>
-                    <li><a href="#">Екологія</a></li>
-                    <li><a href="#">Закупівлі</a></li>
-                    <li><a href="#">Події</a></li>
-                    <li><a href="#">Карта сайту</a></li>
-                    <li><a href="#">Контакти</a></li>
-                </ul>
+                <h4>Телефон</h4>
+                <p>+38 (03477) 6-11-01</p>
             </div>
             <div class="footer-col">
-                <h4>Сертифікація</h4>
-                <div class="footer-placeholder">FSC<sup>®</sup></div>
+                <h4>Продажі</h4>
+                <p><a href="mailto:uniplytsales@gmail.com">uniplytsales@gmail.com</a></p>
+            </div>
+            <div class="footer-col footer-col-fsc">
+                <a href="image/patterns/UNIPLYT-LLC-FSC-COC-Certificate-6.9.2022_1662444984.pdf" target="_blank" rel="noopener" class="footer-fsc" aria-label="FSC C112264 — переглянути сертифікат (PDF)">
+                    <img src="image/patterns/fsc.png" alt="FSC® C112264 — The mark of responsible forestry">
+                </a>
             </div>
             <div class="footer-col">
-                <h4>Логістика</h4>
-                <ul>
-                    <li>Івано-Франківськ — виробництво</li>
-                    <li>Харків — головний офіс</li>
-                    <li>Київ — представництво</li>
-                </ul>
+                <h4>Секретаріат</h4>
+                <p><a href="mailto:secretar@uniplyt.com.ua">secretar@uniplyt.com.ua</a></p>
             </div>
             <div class="footer-col">
-                <h4>Контакти</h4>
-                <p>Україна, с-ще Вигода,<br>вул. Заводська, 4</p>
-                <p>Тел.: +38 (03477) 6-11-01,<br>6-13-76, 6-14-41</p>
+                <h4>Адреса</h4>
+                <p>селище Вигода,<br>Івано-Франківська обл.</p>
             </div>
         </div>
         <div class="footer-bottom">
-            © 2003–2026 ТОВ «Уніплит» — Виробництво ДВП, ДВПО, Фанери
+            <span>ТОВ «Уніплит» · ЄДРПОУ 30905968 &nbsp;&nbsp; © 2003–2026 Усі права захищені</span>
+            <a href="#" class="footer-policy">Політика конфіденційності</a>
         </div>
     </footer>
 
