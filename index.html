@@ -65,12 +65,12 @@
             <img src="image/logo_svg/uniplyt_logo_green.svg" alt="Uniplyt">
         </a>
         <ul class="top-nav">
+            <li><a href="#" data-view="products">Наша продукція</a></li>
             <li>
                 <a href="#">Компанія <span class="caret">▼</span></a>
                 <ul class="dropdown">
                     <li><a href="#" data-view="sertyfikaty">Сертифікати</a></li>
                     <li><a href="#" data-view="social">Соціальні ініціативи</a></li>
-                    <li><a href="#" data-view="vlk">Вигодський лісокомбінат</a></li>
                     <li><a href="#" data-view="finance">Фінансова звітність</a></li>
                     <li><a href="#" data-view="quality">Система якості</a></li>
                 </ul>
@@ -120,7 +120,6 @@
             <ul>
                 <li><a href="#" data-view="sertyfikaty">Сертифікати</a></li>
                 <li><a href="#" data-view="social">Соціальні ініціативи</a></li>
-                <li><a href="#" data-view="vlk">Вигодський лісокомбінат</a></li>
                 <li><a href="#" data-view="finance">Фінансова звітність</a></li>
                 <li><a href="#" data-view="quality">Система якості</a></li>
                 <li><a href="#" data-view="syrovyna">Екологія</a></li>
@@ -162,10 +161,25 @@
                         </div>
                     </div>
                     <div class="hero-actions">
-                        <a href="#" class="btn btn-primary" data-product-link="dvp">Переглянути продукцію</a>
+                        <a href="#" class="btn btn-primary" data-view-link="products">Переглянути продукцію</a>
                         <a href="#" class="btn btn-ghost" data-view-link="contacts">Зв'язатися з нами</a>
                     </div>
                 </div>
+
+                <section class="quick-links">
+                    <a href="#" class="quick-link" data-view-link="products">
+                        <span class="quick-link-eyebrow">Каталог</span>
+                        <h3>Наша продукція</h3>
+                        <span class="quick-link-meta">ДВП, ДВПО, фанера, пиломатеріали, двері, брикети</span>
+                        <span class="quick-link-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a href="#" class="quick-link" data-view-link="projects">
+                        <span class="quick-link-eyebrow">Група компаній</span>
+                        <h3>Інші напрямки</h3>
+                        <span class="quick-link-meta">Unibruk, Gorgania, Карпатський трамвай, RUF</span>
+                        <span class="quick-link-arrow" aria-hidden="true">→</span>
+                    </a>
+                </section>
 
                 <section class="highlight">
                     <div class="highlight-content">
@@ -243,6 +257,80 @@
             <section class="view" id="view-product" hidden>
                 <h1 id="product-title"></h1>
                 <div id="product-content"></div>
+            </section>
+
+            <section class="view" id="view-products" hidden>
+                <h1>Наша продукція</h1>
+                <p class="description">
+                    Шість напрямків виробництва — від листових плит для меблевих фабрик до пиломатеріалів і паливних брикетів. Уся продукція проходить лабораторний контроль і відповідає українським та європейським стандартам.
+                </p>
+                <div class="products-grid">
+                    <article class="product-card-catalog">
+                        <div class="product-card-media">
+                            <img src="image/dvp.jpg" alt="ДВП" loading="lazy">
+                        </div>
+                        <div class="product-card-body">
+                            <h3>ДВП</h3>
+                            <p>Деревоволокнисті плити мокрого способу виробництва. Меблева промисловість, будівництво, упаковка.</p>
+                            <a href="#" data-product-link="dvp" class="product-card-link">Детальніше →</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card-catalog">
+                        <div class="product-card-media">
+                            <img src="image/dvpo.jpg" alt="ДВПО" loading="lazy">
+                        </div>
+                        <div class="product-card-body">
+                            <h3>ДВПО</h3>
+                            <p>ДВП з лакофарбовим покриттям. Задні стінки меблів, оздоблення інтер'єрів і транспорту.</p>
+                            <a href="#" data-product-link="dvpo" class="product-card-link">Детальніше →</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card-catalog">
+                        <div class="product-card-media">
+                            <img src="image/fanera.jpg" alt="Фанера" loading="lazy">
+                        </div>
+                        <div class="product-card-body">
+                            <h3>Фанера</h3>
+                            <p>Водостійка ФКМ класу E1 та березова ФК. Будівництво, меблі, експорт у 20+ країн.</p>
+                            <a href="#" data-product-link="fanera" class="product-card-link">Детальніше →</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card-catalog">
+                        <div class="product-card-media">
+                            <img src="image/pilomat.jpg" alt="Пиломатеріали" loading="lazy">
+                        </div>
+                        <div class="product-card-body">
+                            <h3>Пиломатеріали</h3>
+                            <p>Обрізні хвойні породи, у тому числі сухі. Будівництво, столярство, упаковка, експорт.</p>
+                            <a href="#" data-product-link="pylomaterialy" class="product-card-link">Детальніше →</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card-catalog">
+                        <div class="product-card-media">
+                            <img src="image/gorgania/photo_1.jpg" alt="Двері" loading="lazy">
+                        </div>
+                        <div class="product-card-body">
+                            <h3>Двері</h3>
+                            <p>Міжкімнатні двері торгової марки Gorgania. Сучасний дизайн, повний каталог на gorgania.com.ua.</p>
+                            <a href="#" data-product-link="dveri" class="product-card-link">Детальніше →</a>
+                        </div>
+                    </article>
+
+                    <article class="product-card-catalog">
+                        <div class="product-card-media">
+                            <img src="image/ruf.jpg" alt="Паливні брикети" loading="lazy">
+                        </div>
+                        <div class="product-card-body">
+                            <h3>Паливні брикети</h3>
+                            <p>Стандарт RUF — пресовані з тирси та деревних відходів. Без хімії, тривале горіння.</p>
+                            <a href="#" data-product-link="brykety" class="product-card-link">Детальніше →</a>
+                        </div>
+                    </article>
+                </div>
             </section>
 
             <section class="view" id="view-syrovyna" hidden>

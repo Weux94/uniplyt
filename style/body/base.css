@@ -63,7 +63,7 @@ h1 {
 @media (max-width: 767px) {
     h1 {
         font-size: 28px;
-        margin-bottom: 18px;
+        margin-bottom: 16px;
     }
 
     .description {

@@ -12,7 +12,7 @@
 
 @media (max-width: 767px) {
     .contacts-grid {
-        gap: 14px;
+        gap: 16px;
     }
 
     .contacts-grid > * {

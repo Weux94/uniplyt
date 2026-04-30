@@ -282,12 +282,79 @@
     background: #2d6a3e;
 }
 
-/* ========== MOBILE (≤ 767px) ========== */
+/* Quick-links — pair of access tiles right after hero.
+   Показуємо тільки на мобілі (≤767), бо на ПК сайдбар + top-nav вже дають доступ до тих самих розділів. */
+.quick-links {
+    display: none;
+}
+
+.quick-link {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 30px;
+    background: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    position: relative;
+    min-height: 180px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+}
+
+.quick-link:nth-child(2) {
+    background: linear-gradient(135deg, #2d6a3e 0%, #3a7d4a 100%);
+}
+
+.quick-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px rgba(30, 77, 43, 0.22);
+}
+
+.quick-link-eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    opacity: 0.7;
+    margin-bottom: 14px;
+}
+
+.quick-link h3 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    color: #fff;
+}
+
+.quick-link-meta {
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.85;
+    margin-bottom: auto;
+}
+
+.quick-link-arrow {
+    font-size: 28px;
+    margin-top: 18px;
+    align-self: flex-start;
+    transition: transform 0.2s;
+}
+
+.quick-link:hover .quick-link-arrow {
+    transform: translateX(6px);
+}
+
+/* ========== MOBILE (≤ 767px) ==========
+   Ритм: 40px між секціями, 16px між елементами, 24px внутрішній паддінг */
 @media (max-width: 767px) {
-    /* Hero — компактний для смартфонів */
+    /* Hero */
     .hero {
-        margin: -30px -20px 0;
-        padding: 40px 20px 36px;
+        margin: -24px -20px 0;
+        padding: 40px 24px 32px;
     }
 
     .hero::after {
@@ -302,12 +369,12 @@
     }
 
     .hero-minimal {
-        padding: 50px 20px 36px;
+        padding: 40px 24px 32px;
     }
 
     .hero-minimal .hero-title {
         font-size: 28px;
-        margin-bottom: 28px;
+        margin-bottom: 24px;
     }
 
     .hero-stats {
@@ -317,7 +384,7 @@
 
     .hero-minimal .hero-stats {
         gap: 16px;
-        margin-bottom: 28px;
+        margin-bottom: 24px;
     }
 
     .hero-minimal .hero-stat-num {
@@ -331,7 +398,7 @@
 
     .hero-actions {
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
         width: 100%;
     }
 
@@ -340,12 +407,43 @@
         justify-content: center;
     }
 
+    /* "Переглянути продукцію" дублюється карткою quick-link нижче — на мобілі ховаємо */
+    .hero-actions .btn:first-child {
+        display: none;
+    }
+
+    /* Quick-links — показуємо тільки на мобілі */
+    .quick-links {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin: 40px 0;
+    }
+
+    .quick-link {
+        padding: 24px;
+        min-height: auto;
+    }
+
+    .quick-link h3 {
+        font-size: 20px;
+    }
+
+    .quick-link-meta {
+        font-size: 13px;
+    }
+
+    .quick-link-arrow {
+        font-size: 22px;
+        margin-top: 16px;
+    }
+
     /* Highlight blocks */
     .highlight {
         flex-direction: column;
-        gap: 24px;
-        padding: 32px 24px;
-        margin-bottom: 32px;
+        gap: 16px;
+        padding: 24px;
+        margin-bottom: 40px;
     }
 
     .highlight-content {
@@ -380,14 +478,17 @@
 
     /* CTA */
     .cta-block {
-        padding: 36px 24px;
+        margin-top: 40px;
+        padding: 24px;
     }
 
     .cta-block h2 {
         font-size: 22px;
+        margin-bottom: 16px;
     }
 
     .cta-block p {
         font-size: 15px;
+        margin-bottom: 24px;
     }
 }
