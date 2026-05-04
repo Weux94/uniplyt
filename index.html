@@ -26,6 +26,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- LCP оптимізація: перший слайд має бути в кеші браузера до парсингу HTML.
+         Решта слайдів — звичайний lazy-load після першого paint. -->
+    <link rel="preload" as="image" href="image/Brussels_Zonienwoud.jpg" fetchpriority="high">
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -61,11 +65,18 @@
 <body>
 
     <header>
-        <a href="#" class="logo" data-view="home" aria-label="Uniplyt — на головну">
-            <img src="image/logo_svg/uniplyt_logo_green.svg" alt="Uniplyt">
-        </a>
-        <ul class="top-nav">
-            <li><a href="#" data-view="products">Наша продукція</a></li>
+        <ul class="top-nav top-nav-left">
+            <li>
+                <a href="#" data-view="products">Продукція <span class="caret">▼</span></a>
+                <ul class="dropdown">
+                    <li><a href="#" data-product="dvp">ДВП</a></li>
+                    <li><a href="#" data-product="dvpo">ДВПО</a></li>
+                    <li><a href="#" data-product="fanera">Фанера</a></li>
+                    <li><a href="#" data-product="pylomaterialy">Пиломатеріали</a></li>
+                    <li><a href="#" data-product="dveri">Двері</a></li>
+                    <li><a href="#" data-product="brykety">Паливні брикети</a></li>
+                </ul>
+            </li>
             <li>
                 <a href="#">Компанія <span class="caret">▼</span></a>
                 <ul class="dropdown">
@@ -73,6 +84,7 @@
                     <li><a href="#" data-view="social">Соціальні ініціативи</a></li>
                     <li><a href="#" data-view="finance">Фінансова звітність</a></li>
                     <li><a href="#" data-view="quality">Система якості</a></li>
+                    <li><a href="#" data-view="syrovyna">Екологія</a></li>
                 </ul>
             </li>
             <li>
@@ -84,11 +96,20 @@
                     <li><a href="#" data-product-link="brykety">RUF — паливні брикети</a></li>
                 </ul>
             </li>
-            <li><a href="#" data-view="syrovyna">Екологія</a></li>
-            <li><a href="#" data-view="zakupivli">Закупівлі</a></li>
-            <li><a href="#" data-view="contacts">Контакти</a></li>
         </ul>
-        <div class="lang">UA | EN</div>
+
+        <a href="#" class="logo" data-view="home" aria-label="Uniplyt — на головну">
+            <img src="image/logo_svg/uniplyt_logo_green.svg" alt="Uniplyt">
+        </a>
+
+        <div class="header-right">
+            <ul class="top-nav top-nav-right">
+                <li><a href="#" data-view="zakupivli">Закупівлі</a></li>
+                <li><a href="#" data-view="contacts">Контакти</a></li>
+            </ul>
+            <div class="lang">UA | EN</div>
+        </div>
+
         <button class="burger" type="button" aria-label="Відкрити меню" aria-expanded="false" id="burger-toggle">
             <span></span><span></span><span></span>
         </button>
@@ -129,40 +150,65 @@
         </div>
     </nav>
 
-    <div class="main-wrapper">
-        <aside>
-            <div class="sidebar-title" id="sidebar-title">Продукція</div>
-            <ul class="product-menu">
-                <li><a href="#" data-product="dvp">ДВП</a></li>
-                <li><a href="#" data-product="dvpo">ДВПО</a></li>
-                <li><a href="#" data-product="fanera">Фанера</a></li>
-                <li><a href="#" data-product="pylomaterialy">Пиломатеріали</a></li>
-                <li><a href="#" data-product="dveri">Двері</a></li>
-                <li><a href="#" data-product="brykety">Паливні брикети</a></li>
-            </ul>
-        </aside>
+    <!-- Full-bleed hero slider — body-level, щоб займати всю ширину viewport незалежно від main-wrapper.
+         Видимість керує script.js: показуємо тільки на view=home. -->
+    <section class="hero-slider" id="hero-slider" aria-label="Презентація компанії">
+        <div class="slide is-active" data-slide="0" style="background-image: url('image/Brussels_Zonienwoud.jpg')">
+            <div class="slide-content">
+                <span class="slide-eyebrow">З Карпатського лісокомбінату</span>
+                <h2 class="slide-title">З українського лісу — у 30+ країн світу</h2>
+                <p class="slide-subtitle">FSC-сертифікована сировина. Прозорий ланцюжок постачання від лісу до плити.</p>
+                <div class="slide-actions">
+                    <a href="#" class="btn btn-primary" data-view-link="products">Переглянути продукцію</a>
+                    <a href="#" class="btn btn-ghost" data-view-link="contacts">Зв'язатися з нами</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide" data-slide="1" style="background-image: url('image/dvp.jpg')">
+            <div class="slide-content">
+                <span class="slide-eyebrow">Мокрий процес</span>
+                <h2 class="slide-title">ДВП без хімії. Тримає сама природа.</h2>
+                <p class="slide-subtitle">Лігнін замість формальдегідних смол. Клас емісії E1, 100% природна основа.</p>
+                <div class="slide-actions">
+                    <a href="#" class="btn btn-primary" data-product-link="dvp">Дізнатися про ДВП</a>
+                    <a href="#" class="btn btn-ghost" data-view-link="contacts">Зв'язатися</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide" data-slide="2" style="background-image: url('image/fanera.jpg')">
+            <div class="slide-content">
+                <span class="slide-eyebrow">50+ років виробництва</span>
+                <h2 class="slide-title">Жодна плита не їде з заводу без аналізу</h2>
+                <p class="slide-subtitle">Контроль кожної партії за ДСТУ та європейськими нормами. Без винятків.</p>
+                <div class="slide-actions">
+                    <a href="#" class="btn btn-primary" data-view-link="sertyfikaty">Сертифікати</a>
+                    <a href="#" class="btn btn-ghost" data-view-link="contacts">Зв'язатися</a>
+                </div>
+            </div>
+        </div>
 
+        <button class="slider-arrow slider-prev" type="button" aria-label="Попередній слайд">‹</button>
+        <button class="slider-arrow slider-next" type="button" aria-label="Наступний слайд">›</button>
+        <div class="slider-dots" role="tablist" aria-label="Навігація слайдера"></div>
+    </section>
+
+    <div class="main-wrapper">
         <main>
             <section class="view" id="view-home">
-                <div class="hero hero-minimal">
-                    <h1 class="hero-title">У світі деревообробки<br>цифри кажуть <span class="hero-accent">самі за себе.</span></h1>
-                    <div class="hero-stats">
-                        <div class="hero-stat">
-                            <div class="hero-stat-num">50+</div>
-                            <div class="hero-stat-label">років досвіду</div>
-                        </div>
-                        <div class="hero-stat">
-                            <div class="hero-stat-num">30+</div>
-                            <div class="hero-stat-label">країн поставок</div>
-                        </div>
-                        <div class="hero-stat">
-                            <div class="hero-stat-num">500+</div>
-                            <div class="hero-stat-label">клієнтів</div>
-                        </div>
+                <h1 class="sr-only">Уніплит — український виробник ДВП, ДВПО, фанери та пиломатеріалів</h1>
+
+                <div class="hero-stats-strip">
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">50+</div>
+                        <div class="hero-stat-label">років досвіду</div>
                     </div>
-                    <div class="hero-actions">
-                        <a href="#" class="btn btn-primary" data-view-link="products">Переглянути продукцію</a>
-                        <a href="#" class="btn btn-ghost" data-view-link="contacts">Зв'язатися з нами</a>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">30+</div>
+                        <div class="hero-stat-label">країн поставок</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">500+</div>
+                        <div class="hero-stat-label">клієнтів</div>
                     </div>
                 </div>
 

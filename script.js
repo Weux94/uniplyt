@@ -42,41 +42,70 @@ const menuLinks = document.querySelectorAll('.product-menu a');
 const titleEl = document.getElementById('product-title');
 const contentEl = document.getElementById('product-content');
 
+const heroSlider = document.getElementById('hero-slider');
+
 function showView(name) {
     views.forEach(v => {
         v.hidden = v.id !== `view-${name}`;
     });
+    if (heroSlider) {
+        heroSlider.hidden = name !== 'home';
+    }
     window.scrollTo({ top: 0, behavior: 'instant' });
-    if (name === 'home') animateHeroStats();
+}
+
+/* Лічильники в hero-stats-strip — стартують з "0+" і анімуються лише коли користувач
+   доскролив до полоски (через IntersectionObserver). Один раз на сесію. */
+let heroStatsAnimated = false;
+
+function initHeroStats() {
+    document.querySelectorAll('.hero-stat-num').forEach(el => {
+        if (el.dataset.target !== undefined) return;
+        const match = el.textContent.trim().match(/^(\d+)(\D*)$/);
+        if (!match) return;
+        el.dataset.target = match[1];
+        el.dataset.suffix = match[2];
+        el.textContent = '0' + match[2];
+    });
 }
 
 function animateHeroStats() {
-    const nums = document.querySelectorAll('.hero-stat-num');
-    nums.forEach(el => {
-        if (el.dataset.target === undefined) {
-            const raw = el.textContent.trim();
-            const match = raw.match(/^(\d+)(\D*)$/);
-            if (!match) return;
-            el.dataset.target = match[1];
-            el.dataset.suffix = match[2];
-        }
+    if (heroStatsAnimated) return;
+    heroStatsAnimated = true;
+
+    document.querySelectorAll('.hero-stat-num').forEach(el => {
         const target = Number(el.dataset.target);
+        if (!Number.isFinite(target)) return;
         const suffix = el.dataset.suffix || '';
         const duration = 1400;
         const start = performance.now();
-        el.textContent = '0' + suffix;
         const tick = (now) => {
             const t = Math.min(1, (now - start) / duration);
             const eased = 1 - Math.pow(1 - t, 3);
-            const value = Math.round(target * eased);
-            el.textContent = value + suffix;
+            el.textContent = Math.round(target * eased) + suffix;
             if (t < 1) requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);
     });
 }
 
-animateHeroStats();
+initHeroStats();
+
+const heroStatsStrip = document.querySelector('.hero-stats-strip');
+if (heroStatsStrip && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateHeroStats();
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    observer.observe(heroStatsStrip);
+} else {
+    /* Старі браузери без IntersectionObserver — просто стартуємо одразу */
+    animateHeroStats();
+}
 
 function setActiveLink(link) {
     menuLinks.forEach(l => l.classList.remove('active'));
@@ -122,6 +151,15 @@ document.querySelectorAll('.top-nav a[data-view]').forEach(link => {
         e.preventDefault();
         showView(link.dataset.view);
         setActiveLink(null);
+    });
+});
+
+/* Дропдаун "Продукція" в хедері — пункти ведуть на конкретний товар */
+document.querySelectorAll('.top-nav a[data-product]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const productKey = link.dataset.product;
+        if (products[productKey]) renderProduct(productKey);
     });
 });
 
@@ -208,3 +246,73 @@ if (burger && mobileMenu) {
         setMobileMenuOpen(false);
     });
 }
+
+/* ========== Hero slider ==========
+   Авто-перехід що 6 секунд, ручне керування через стрілки/точки/свайп.
+   Пауза при наведенні мишею. Перший слайд preload-нутий через <link> у head. */
+(() => {
+    if (!heroSlider) return;
+
+    const slides = heroSlider.querySelectorAll('.slide');
+    if (slides.length < 2) return;
+
+    const dotsContainer = heroSlider.querySelector('.slider-dots');
+    const prevBtn = heroSlider.querySelector('.slider-prev');
+    const nextBtn = heroSlider.querySelector('.slider-next');
+
+    const AUTOPLAY_MS = 6000;
+    let current = 0;
+    let timer = null;
+
+    slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'slider-dot' + (i === 0 ? ' is-active' : '');
+        dot.setAttribute('aria-label', `Слайд ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+    });
+    const dots = heroSlider.querySelectorAll('.slider-dot');
+
+    function goTo(target) {
+        const next = ((target % slides.length) + slides.length) % slides.length;
+        if (next === current) return;
+        slides[current].classList.remove('is-active');
+        dots[current].classList.remove('is-active');
+        slides[next].classList.add('is-active');
+        dots[next].classList.add('is-active');
+        current = next;
+        startTimer();
+    }
+
+    function startTimer() {
+        stopTimer();
+        timer = setInterval(() => goTo(current + 1), AUTOPLAY_MS);
+    }
+
+    function stopTimer() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    heroSlider.addEventListener('mouseenter', stopTimer);
+    heroSlider.addEventListener('mouseleave', startTimer);
+
+    let touchStartX = 0;
+    heroSlider.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        stopTimer();
+    }, { passive: true });
+    heroSlider.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 50) goTo(current + (dx < 0 ? 1 : -1));
+        else startTimer();
+    });
+
+    startTimer();
+})();

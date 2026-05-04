@@ -1,64 +1,19 @@
+/* Layout: main-wrapper — повноширинний flex-item у body, тримає футер внизу.
+   Центрування контенту робить <main> як звичайний block-level елемент через
+   margin auto. Це надійніше, ніж автомаржини на flex-item у column-флексі —
+   на 4K browser некоректно центрував їх. */
 .main-wrapper {
-    display: flex;
     flex: 1;
-}
-
-aside {
-    width: var(--sidebar-width);
-    border-right: 1px solid var(--border);
-    background: #fcfcfc;
-    padding: 40px 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar-title {
-    padding: 0 20px 24px;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-}
-
-.product-menu {
-    list-style: none;
-}
-
-.product-menu li a {
-    display: block;
-    padding: 15px 40px;
-    text-decoration: none;
-    color: var(--text-main);
-    font-weight: 500;
-    font-size: 16px;
-    transition: all 0.2s;
-    border-left: 4px solid transparent;
-}
-
-.product-menu li a:hover {
-    background: #f1f5f1;
-    color: var(--primary);
-    border-left-color: var(--primary);
-}
-
-.product-menu li a.active {
-    background: #eef3ef;
-    color: var(--primary);
-    font-weight: 600;
-    border-left-color: var(--primary);
+    width: 100%;
 }
 
 main {
-    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
     padding: 60px 80px;
 }
 
 @media (max-width: 767px) {
-    aside {
-        display: none;
-    }
-
     main {
         padding: 24px 20px;
     }

@@ -1,24 +1,64 @@
 header {
-    height: 90px;
-    border-bottom: 1px solid var(--border);
+    height: 110px;
     display: flex;
     align-items: center;
-    padding: 0 40px;
+    padding: 0 60px;
     justify-content: space-between;
     flex-shrink: 0;
+    position: relative;
+    width: 100%;
+}
+
+/* Нижняя линия хедера — двумя кусками, слева и справа от центрального кармана.
+   Гэп под логотип = ширина .logo / 2 + невеликий запас */
+header::before,
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    background: var(--border);
+}
+
+header::before {
+    left: 0;
+    right: calc(50% + 135px);
+}
+
+header::after {
+    left: calc(50% + 135px);
+    right: 0;
 }
 
 .logo {
-    width: var(--sidebar-width);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 270px;
+    height: 195px;
     display: flex;
     align-items: center;
+    justify-content: center;
     text-decoration: none;
+    background: #fff;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    border-radius: 0 0 40px 40px;
+    z-index: 5;
 }
 
 .logo img {
-    height: 72px;
+    height: 175px;
     width: auto;
     display: block;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
 .top-nav {
@@ -35,7 +75,7 @@ header {
     display: flex;
     align-items: center;
     gap: 8px;
-    height: 90px;
+    height: 110px;
     text-decoration: none;
     color: var(--text-main);
     font-weight: 500;
@@ -73,6 +113,12 @@ header {
     transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     z-index: 100;
+}
+
+/* Правый блок меню: дропдауны открываются влево, чтобы не вылетать за край */
+.top-nav-right .dropdown {
+    left: auto;
+    right: 0;
 }
 
 .top-nav > li:hover > .dropdown {
@@ -122,10 +168,23 @@ header {
     header {
         height: 60px;
         padding: 0 16px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    /* На мобилке хедер плоский — линия рисуется border-bottom, а не пвсевдо-куски */
+    header::before,
+    header::after {
+        display: none;
     }
 
     .logo {
+        position: static;
+        transform: none;
         width: auto;
+        height: auto;
+        background: transparent;
+        border: none;
+        z-index: auto;
     }
 
     .logo img {
@@ -133,7 +192,8 @@ header {
     }
 
     .top-nav,
-    .lang {
+    .lang,
+    .header-right {
         display: none;
     }
 
