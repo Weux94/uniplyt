@@ -423,6 +423,114 @@
     transform: translateX(6px);
 }
 
+/* ========== TABLET / COMPACT DESKTOP (768 – 1199) ==========
+   Між мобілкою і повним десктопом — переходна зона: всі секції візуально
+   зменшуємо, щоб лізли і виглядали збалансовано. Стрілки слайдера ближче
+   до краю, hero-stats збитіше, highlight без розкоші. */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .hero-slider {
+        height: 520px;
+    }
+
+    .slide-content {
+        max-width: 660px;
+        padding: 0 32px;
+    }
+
+    .slide-eyebrow {
+        font-size: 12px;
+        letter-spacing: 2.5px;
+        margin-bottom: 18px;
+    }
+
+    .slide-title {
+        font-size: 36px;
+        margin-bottom: 18px;
+    }
+
+    .slide-subtitle {
+        font-size: 16px;
+        margin-bottom: 28px;
+    }
+
+    .slider-arrow {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+    }
+
+    .slider-prev { left: 24px; }
+    .slider-next { right: 24px; }
+
+    .slider-dots {
+        bottom: 24px;
+    }
+
+    /* Stats strip */
+    .hero-stats-strip {
+        gap: 32px;
+        padding: 28px 32px;
+        margin: 0 0 48px;
+    }
+
+    .hero-stat-num {
+        font-size: 38px;
+    }
+
+    .hero-stat-label {
+        font-size: 12px;
+    }
+
+    /* Highlight blocks */
+    .highlight {
+        padding: 36px;
+        gap: 32px;
+        margin-bottom: 60px;
+    }
+
+    .highlight-kicker {
+        font-size: 11px;
+        letter-spacing: 2px;
+        margin-bottom: 18px;
+    }
+
+    .highlight-title {
+        font-size: 24px;
+        margin-bottom: 18px;
+    }
+
+    .highlight-text {
+        font-size: 15px;
+        line-height: 1.65;
+    }
+
+    .highlight-circle {
+        width: 200px;
+        height: 200px;
+    }
+
+    .highlight-symbol {
+        font-size: 56px;
+    }
+
+    .highlight-caption {
+        font-size: 18px;
+    }
+
+    /* CTA block */
+    .cta-block {
+        padding: 40px 32px;
+    }
+
+    .cta-block h2 {
+        font-size: 26px;
+    }
+
+    .cta-block p {
+        font-size: 15px;
+    }
+}
+
 /* ========== MOBILE (≤ 767px) ==========
    Ритм: 40px між секціями, 16px між елементами, 24px внутрішній паддінг */
 @media (max-width: 767px) {

@@ -12,12 +12,18 @@
     display: block;
 }
 
-/* Catalog grid — сторінка "Наша продукція" з усіма 6 продуктами */
+/* Catalog "сітка" — два стовпчики на повному, один на мобілі.
+   Реалізовано на flexbox, без display:grid і без fr-юнітів. */
 .products-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 24px;
     margin-top: 32px;
+}
+
+.products-grid > * {
+    flex: 1 1 calc(50% - 12px);
+    min-width: 280px;
 }
 
 .product-card-catalog {
@@ -87,9 +93,13 @@
 
 @media (max-width: 767px) {
     .products-grid {
-        grid-template-columns: 1fr;
         gap: 16px;
         margin-top: 24px;
+    }
+
+    .products-grid > * {
+        flex: 1 1 100%;
+        min-width: 0;
     }
 
     .product-card-catalog .product-card-body {
