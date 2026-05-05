@@ -8,6 +8,7 @@
 @import "style/body/sidebar.css";
 @import "style/body/components.css";
 @import "style/body/footer.css";
+@import "style/body/fraud-modal.css";
 
 /* --- PAGES (стилі конкретних сторінок) --- */
 @import "style/pages/home.css";

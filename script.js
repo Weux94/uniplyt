@@ -77,7 +77,7 @@ function animateHeroStats() {
         const target = Number(el.dataset.target);
         if (!Number.isFinite(target)) return;
         const suffix = el.dataset.suffix || '';
-        const duration = 1400;
+        const duration = 2200;
         const start = performance.now();
         const tick = (now) => {
             const t = Math.min(1, (now - start) / duration);
@@ -315,4 +315,25 @@ if (burger && mobileMenu) {
     });
 
     startTimer();
+})();
+
+/* ========== Антифрод-модалка ==========
+   Клас .show-fraud-modal на <html> вже виставлений inline-скриптом у <head>,
+   якщо модалку треба показати. Тут — лише обробка закриття. */
+(() => {
+    if (!document.documentElement.classList.contains('show-fraud-modal')) return;
+
+    const modal = document.getElementById('fraud-modal');
+    const btn = document.getElementById('fraud-modal-btn');
+    if (!modal || !btn) return;
+
+    const KEY = 'uniplyt_fraud_notice_v1';
+
+    const close = () => {
+        try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+        document.documentElement.classList.remove('show-fraud-modal');
+    };
+
+    btn.addEventListener('click', close);
+    btn.focus({ preventScroll: true });
 })();

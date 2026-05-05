@@ -26,6 +26,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Антифрод-модалка: рішення показувати/не показувати приймається ДО першого фарбу,
+         щоб у повторних відвідувачів не миготіла модалка. Версія ключа (_v1) — якщо текст
+         модалки істотно зміниться, бумкнути на _v2 щоб усім показалось знову. -->
+    <script>
+        (function () {
+            try {
+                var KEY = 'uniplyt_fraud_notice_v1';
+                var EXPIRY_MS = 30 * 24 * 60 * 60 * 1000;
+                var last = parseInt(localStorage.getItem(KEY) || '0', 10);
+                if (!last || Date.now() - last > EXPIRY_MS) {
+                    document.documentElement.classList.add('show-fraud-modal');
+                }
+            } catch (e) { /* приватний режим / disabled storage — просто не показуємо */ }
+        })();
+    </script>
+
     <!-- LCP оптимізація: перший слайд має бути в кеші браузера до парсингу HTML.
          Решта слайдів — звичайний lazy-load після першого paint. -->
     <link rel="preload" as="image" href="image/Brussels_Zonienwoud.jpg" fetchpriority="high">
@@ -668,6 +684,32 @@
             <a href="#" class="footer-policy">Політика конфіденційності</a>
         </div>
     </footer>
+
+    <!-- Антифрод-попередження. Видимість керується класом .show-fraud-modal на <html>,
+         який ставиться inline-скриптом у <head> до першого фарбу. -->
+    <div class="fraud-modal" id="fraud-modal" role="dialog" aria-modal="true"
+         aria-labelledby="fraud-modal-title" aria-describedby="fraud-modal-body">
+        <div class="fraud-modal-card" role="document">
+            <h2 class="fraud-modal-title" id="fraud-modal-title">
+                <span class="fraud-modal-icon" aria-hidden="true">⚠&#xFE0F;</span>
+                Будьте уважні: захист від шахрайства
+            </h2>
+            <div class="fraud-modal-body" id="fraud-modal-body">
+                <p>
+                    ТОВ «Уніплит» <strong>не публікує банківські реквізити на сайті</strong> і не приймає платежі онлайн. Реквізити для переказу надає <strong>тільки наш менеджер відділу продажів</strong> — після переговорів, телефоном або з офіційної корпоративної пошти на домені <code>@uniplyt.com.ua</code>.
+                </p>
+                <p>
+                    Якщо вам пропонують сплатити прямо на сайті, у чаті, через «форму замовлення», або повідомляють, що <em>«реквізити змінилися — переведіть на новий рахунок»</em>, — <strong>це шахраї</strong>. У будь-якій незрозумілій ситуації передзвоніть нам:
+                </p>
+                <p class="fraud-modal-phone">
+                    <a href="tel:+380347761101">+38 (03477) 6-11-01</a>
+                </p>
+            </div>
+            <button type="button" class="fraud-modal-btn" id="fraud-modal-btn">
+                Зрозуміло, дякую
+            </button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

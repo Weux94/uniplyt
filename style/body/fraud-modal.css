@@ -1,0 +1,172 @@
+/* Антифрод-модалка. Дефолтно прихована — показується додаванням класу
+   .show-fraud-modal на <html> (це робить inline-скрипт у <head>, до першого фарбу,
+   щоб у вже бачивших користувачів модалка не миготіла). */
+
+.fraud-modal {
+    position: fixed;
+    inset: 0;
+    /* Темна заливка — фолбек для браузерів без backdrop-filter (~5%) */
+    background: rgba(15, 23, 42, 0.55);
+    /* Розмиття бекграунду: візуально гасить недозавантажений сайт за модалкою,
+       працює як "загрузочний екран" на повільних з'єднаннях. saturate(0.7)
+       додатково знебарвлює фон, щоб око не чіплялось за яскраві елементи. */
+    backdrop-filter: blur(10px) saturate(0.7);
+    -webkit-backdrop-filter: blur(10px) saturate(0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Якщо blur підтримується — заливку можна зробити легшою, бо blur і так гасить вміст.
+   Інакше залишаємо щільнішу темну заливку (фолбек вище). */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .fraud-modal {
+        background: rgba(15, 23, 42, 0.35);
+    }
+}
+
+html.show-fraud-modal .fraud-modal {
+    display: flex;
+}
+
+html.show-fraud-modal {
+    overflow: hidden;
+}
+
+.fraud-modal-card {
+    background: #fff;
+    border-radius: 14px;
+    max-width: 580px;
+    width: 100%;
+    padding: 36px 40px 28px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+    margin: auto;
+}
+
+.fraud-modal-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.fraud-modal-icon {
+    font-size: 24px;
+    line-height: 1;
+    flex-shrink: 0;
+    /* Forces colored emoji rendering (а не моно-text-style) */
+    font-variant-emoji: emoji;
+}
+
+.fraud-modal-body {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-main);
+    margin-bottom: 24px;
+}
+
+.fraud-modal-body p + p {
+    margin-top: 14px;
+}
+
+.fraud-modal-body strong {
+    color: var(--text-main);
+}
+
+.fraud-modal-body em {
+    font-style: italic;
+    color: #475569;
+}
+
+.fraud-modal-body code {
+    background: #f1f5f9;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-family: Consolas, 'SF Mono', Menlo, monospace;
+    font-size: 13.5px;
+    color: var(--primary);
+}
+
+.fraud-modal-phone {
+    text-align: center;
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+.fraud-modal-phone a {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+}
+
+.fraud-modal-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    transition: background 0.18s;
+}
+
+.fraud-modal-btn:hover {
+    background: #163921;
+}
+
+.fraud-modal-btn:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+    .fraud-modal {
+        padding: 16px;
+    }
+
+    .fraud-modal-card {
+        padding: 28px 22px 22px;
+        border-radius: 12px;
+    }
+
+    .fraud-modal-title {
+        font-size: 18px;
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .fraud-modal-icon {
+        font-size: 22px;
+    }
+
+    .fraud-modal-body {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .fraud-modal-phone a {
+        font-size: 17px;
+    }
+
+    .fraud-modal-btn {
+        padding: 13px;
+        font-size: 14px;
+    }
+}
