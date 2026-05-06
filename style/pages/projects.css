@@ -8,17 +8,6 @@
 .project-card {
     display: flex;
     align-items: stretch;
-    background: #fcfcfc;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    border-left: 4px solid var(--primary);
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.project-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(30, 77, 43, 0.1);
 }
 
 .project-media {
@@ -26,13 +15,6 @@
     width: 320px;
     background: #eef3ef;
     overflow: hidden;
-}
-
-.project-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
 }
 
 .project-body {
@@ -82,15 +64,6 @@
 
 .project-link:hover {
     text-decoration: underline;
-}
-
-.project-link-muted {
-    color: var(--text-muted);
-    font-style: italic;
-}
-
-.project-link-muted:hover {
-    text-decoration: none;
 }
 
 @media (max-width: 767px) {

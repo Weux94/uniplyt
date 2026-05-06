@@ -76,10 +76,6 @@ html.show-fraud-modal {
     margin-top: 14px;
 }
 
-.fraud-modal-body strong {
-    color: var(--text-main);
-}
-
 .fraud-modal-body em {
     font-style: italic;
     color: #475569;
@@ -132,8 +128,9 @@ html.show-fraud-modal {
 }
 
 .fraud-modal-btn:focus-visible {
-    outline: 3px solid var(--primary);
-    outline-offset: 2px;
+    /* Білий outline всередині зеленої кнопки — щоб був видимий контраст */
+    outline: 3px solid #fff;
+    outline-offset: -6px;
 }
 
 @media (max-width: 767px) {

@@ -2,7 +2,9 @@ header {
     height: 110px;
     display: flex;
     align-items: center;
-    padding: 0 60px;
+    /* Контент хедера бундлится у 1200px на широких екранах (FullHD+, 4K),
+       а декоративні підкреслення (::before/::after) йдуть на всю ширину viewport. */
+    padding: 0 max(60px, calc((100% - 1200px) / 2));
     justify-content: space-between;
     flex-shrink: 0;
     position: relative;

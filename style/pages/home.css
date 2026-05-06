@@ -1,16 +1,12 @@
 /* ========== HERO SLIDER (full-bleed, body-level) ==========
    Слайдер живе одразу під хедером, на всю ширину viewport, без обрізань.
-   JS ховає його через [hidden] коли активна не-home в'юха. */
+   На MPA він фізично присутній лише на головній — інших сторінок не стосується. */
 .hero-slider {
     position: relative;
     width: 100%;
     height: 620px;
     overflow: hidden;
     background: #1e4d2b;
-}
-
-.hero-slider[hidden] {
-    display: none;
 }
 
 .slide {

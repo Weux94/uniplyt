@@ -5,7 +5,7 @@
 /* --- BODY (спільне для всіх сторінок) --- */
 @import "style/body/base.css";
 @import "style/body/header.css";
-@import "style/body/sidebar.css";
+@import "style/body/layout.css";
 @import "style/body/components.css";
 @import "style/body/footer.css";
 @import "style/body/fraud-modal.css";

@@ -3,19 +3,12 @@
     --border: #e2e8f0;
     --text-main: #1a202c;
     --text-muted: #718096;
-    --sidebar-width: 280px;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html {
-    background: #fff;
-    position: relative;
-    min-height: 100%;
 }
 
 body {
@@ -28,7 +21,7 @@ body {
     overflow-x: hidden;
 }
 
-/* SR-only: для прихованих H1 на SPA-вьюхах, поки не зробимо нормальний роутинг */
+/* SR-only: для прихованого H1 на головній (видимий заголовок там — у слайдері) */
 .sr-only {
     position: absolute;
     width: 1px;

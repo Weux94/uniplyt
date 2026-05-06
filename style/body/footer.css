@@ -8,7 +8,7 @@ footer {
     display: flex;
     gap: 40px;
     padding: 50px 80px 40px;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     align-items: center;
 }
@@ -73,7 +73,8 @@ footer {
     align-items: center;
     gap: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 18px 80px;
+    /* Контент стискається у 1200px на широких екранах, border-top йде на всю ширину. */
+    padding: 18px max(80px, calc((100% - 1200px) / 2));
     font-size: 13px;
     color: rgba(255, 255, 255, 0.7);
 }
