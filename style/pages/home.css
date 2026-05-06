@@ -504,17 +504,17 @@
         line-height: 1.65;
     }
 
-    .highlight-circle {
-        width: 200px;
-        height: 200px;
+    /* Декоративний круг ховаємо на всьому tablet-діапазоні теж — у вузькій
+       "перехідній зоні" (landscape phone, iPad portrait) він стискає текст
+       і нічого не додає. Лишається тільки на FHD-десктопі (≥1200px), де
+       є простір для нього як акценту. Коли клієнт дасть фото —
+       замінимо на медіа-слот 16:9, який працюватиме на всіх розмірах. */
+    .highlight-visual {
+        display: none;
     }
 
-    .highlight-symbol {
-        font-size: 56px;
-    }
-
-    .highlight-caption {
-        font-size: 18px;
+    .highlight-content {
+        flex: 1;
     }
 
     /* CTA block */
@@ -637,8 +637,10 @@
         flex: none;
     }
 
+    /* Декоративний круг ховаємо повністю — текст уже несе всю інформацію,
+       круг займав би ~180px вертикального простору без сенсу */
     .highlight-visual {
-        flex: none;
+        display: none;
     }
 
     .highlight-title {
@@ -648,19 +650,6 @@
 
     .highlight-text {
         font-size: 15px;
-    }
-
-    .highlight-circle {
-        width: 180px;
-        height: 180px;
-    }
-
-    .highlight-symbol {
-        font-size: 50px;
-    }
-
-    .highlight-caption {
-        font-size: 17px;
     }
 
     /* CTA */

@@ -1,0 +1,15 @@
+# Uniplyt — URL routing.
+# Файлово сторінки лежать у /pages/, але URL для юзера й Google — без /pages/.
+# Тобто запит /products/dvp/ внутрішньо віддає /pages/products/dvp/index.html.
+
+RewriteEngine On
+
+# 1. Якщо реальний файл або папка існує за тим шляхом, що запитали — віддаємо як є.
+#    Це покриває: /, /index.html, /style.css, /script.js, /image/..., /seo/...
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# 2. Усе інше — внутрішньо переписуємо в /pages/...
+#    URL у браузері НЕ змінюється; сервер просто бере файл звідти.
+RewriteRule ^(.*)$ pages/$1 [L]

@@ -1,0 +1,19 @@
+{
+    "// note": "Workspace settings — лише для локального дев-сервера. На продакшні (Hostinger) URL-роутинг робить .htaccess у корені.",
+    "// note 2": "Live Server не вміє читати .htaccess, тому маппимо кожен URL у папку всередині /pages/ вручну. Якщо додаєте нову сторінку — додайте новий рядок сюди.",
+
+    "liveServer.settings.mount": [
+        ["/bezpeka",     "./pages/bezpeka"],
+        ["/contacts",    "./pages/contacts"],
+        ["/finance",     "./pages/finance"],
+        ["/privacy",     "./pages/privacy"],
+        ["/products",    "./pages/products"],
+        ["/projects",    "./pages/projects"],
+        ["/quality",     "./pages/quality"],
+        ["/sertyfikaty", "./pages/sertyfikaty"],
+        ["/social",      "./pages/social"],
+        ["/syrovyna",    "./pages/syrovyna"],
+        ["/vlk",         "./pages/vlk"],
+        ["/zakupivli",   "./pages/zakupivli"]
+    ]
+}
